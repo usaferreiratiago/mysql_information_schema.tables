@@ -2,8 +2,8 @@
 
 SELECT  
 TABLE_CATALOG,
-TABLE_SCHEMA,
-TABLE_NAME,
+CONCAT(TABLE_SCHEMA,'.',
+lower(TABLE_NAME)) AS 'INFORMATION SCHEMA',
 TABLE_TYPE,
 ENGINE,
 VERSION,
@@ -14,4 +14,5 @@ UPDATE_TIME,
 CHECK_TIME,
 TABLE_COLLATION,
 TABLE_COMMENT
-FROM information_schema.tables;
+FROM information_schema.tables
+where table_schema = 'information_schema';
